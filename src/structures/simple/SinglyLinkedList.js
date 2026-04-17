@@ -84,7 +84,22 @@ class SinglyLinkedList {
   }
 
   reverseInPlace() {
+    if (this.head === null || this.head.next === null) {
+      return;
+    }
+
     let previous = null;
+    let current = this.head;
+    this.tail = this.head;
+    
+    while (current !== null) {
+      let next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    
+    this.head = previous;
   }
 
   removeDuplicates() {
