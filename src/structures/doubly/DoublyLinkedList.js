@@ -79,7 +79,7 @@ class DoublyLinkedList {
     let current = this.head;
 
     while (current !== null) {
-      if (this.isSameValue(current.value, value)) {
+      if (this._isSameValue(current.value, value)) {
         count++;
       }
 
@@ -100,9 +100,20 @@ class DoublyLinkedList {
   }
 
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en DoublyLinkedList."
-    );
+    let current = this.head;
+    let temp = null;
+
+    while (current !== null) {
+      temp = current.getNext();
+
+      current.setNext(current.getPrevious());
+      current.setPrevious(temp);
+      current = temp;
+    }
+
+    temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
   }
 
   removeDuplicates() {
