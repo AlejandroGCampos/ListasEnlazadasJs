@@ -54,19 +54,37 @@ class SinglyLinkedList {
   }
 
   countOccurrences(value) {
-    throw new Error(
-      "TODO RETO: Implementar countOccurrences(value) en SinglyLinkedList."
-    );
+    let count = 0;
+    let current = this.head;
+    while (current !== null) {
+      if (this._isSameValue(current.value, value)) {
+        count++;
+      }
+      current = current.next;
+    }
+    return count;
   }
 
   clean() {
-    throw new Error("TODO RETO: Implementar clean() en SinglyLinkedList.");
+    let removed = 0;
+    let current = this.head;
+
+    while (current !== null) {
+      let next = current.next;
+      current.next = null;
+      current = next;
+      removed++;
+    }
+
+    this.head = null;
+    this.tail = null;
+    this._size = 0;
+
+    return removed;
   }
 
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en SinglyLinkedList."
-    );
+    let previous = null;
   }
 
   removeDuplicates() {
