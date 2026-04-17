@@ -82,7 +82,7 @@ class DoublyLinkedList {
       if (this.isSameValue(current.value, value)) {
         count++;
       }
-      
+
       current = current.next;
     }
 
@@ -90,7 +90,13 @@ class DoublyLinkedList {
   }
 
   clean() {
-    throw new Error("TODO RETO: Implementar clean() en DoublyLinkedList.");
+    let total = this.size;
+
+    while (!this.isEmpty()) {
+      this.removeFirst();
+    }
+
+    return total;
   }
 
   reverseInPlace() {
